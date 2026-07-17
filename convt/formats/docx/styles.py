@@ -2,10 +2,9 @@
 
 import xml.etree.ElementTree as ET
 from zipfile import ZipFile
+from convt.formats.docx.docxdata.style.parsePPR import parseStyles_pPr
 from convt.formats.docx.docxdata.style.parseRPR import parseStyles_rPr
 from convt.parser.hxml import getNameSpaces
-
-
 
 def parseStyles(element: ET.Element, ns: dict) -> dict:
     # <w:rFonts w:asciiTheme="minorHAnsi" w:eastAsiaTheme="minorEastAsia" w:hAnsiTheme="minorHAnsi" w:cstheme="minorBidi"/>
@@ -14,6 +13,10 @@ def parseStyles(element: ET.Element, ns: dict) -> dict:
     rPr = element.find("w:rPr", ns) # Run Properties
     if rPr is not None:
         output["rPr"] = parseStyles_rPr(rPr, ns) or {}
+
+    pPr = element.find("w:pPr", ns) # Run Properties
+    if pPr is not None:
+        output["pPr"] = parseStyles_pPr(pPr, ns) or {}
     
     return output
 
@@ -39,6 +42,6 @@ def extractStyles(document_path):
             defaults_rPr = parseStyles(rPrDefault, namespaces)
             defaults_pPr = parseStyles(pPrDefault, namespaces)
 
-            print(defaults_rPr)
     
+    print(defaults_pPr)
     return styles

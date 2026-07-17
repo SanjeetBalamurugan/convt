@@ -240,3 +240,11 @@ class BDRVal(StrEnum):
     WHITE_FLOWERS = "whiteFlowers"
     WOODWORK = "woodwork"
     XFD = "xfd"
+
+class Alignment(StrEnum):
+    TOP = "top"
+    CENTER = "center"
+    BOTTOM = "bottom"
+    INLINE = "inline"
+    INSIDE = "inside"
+    OUTSIDE = "outside"

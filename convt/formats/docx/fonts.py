@@ -1,9 +1,9 @@
 from enum import Enum
 from zipfile import ZipFile
 
-from convt.formats.docxdata.csb import CodePageBit0, CodePageBit1
-from convt.formats.docxdata.panose import PANOSE_DEFAULT, decodePanose
-from convt.formats.docxdata.usb import UnicodeSubrange0, UnicodeSubrange1, UnicodeSubrange2, UnicodeSubrange3
+from convt.formats.docx.docxdata.csb import CodePageBit0, CodePageBit1
+from convt.formats.docx.docxdata.panose import PANOSE_DEFAULT, decodePanose
+from convt.formats.docx.docxdata.usb import UnicodeSubrange0, UnicodeSubrange1, UnicodeSubrange2, UnicodeSubrange3
 from convt.parser.hxml import getAttr, getNameSpaces
 
 import xml.etree.ElementTree as ET
@@ -103,3 +103,4 @@ def extractFonts(document_path: str) -> dict:
                 fonts[fontName] = parsed
     
     return fonts
+

@@ -2,7 +2,8 @@ import xml.etree.ElementTree as ET
 from enum import Enum
 import re
 
-from convt.formats.docx import extractFonts
+from convt.formats.docx.fonts import extractFonts
+from convt.formats.docx.styles import extractStyles
 from convt.importer import Importer
 
 import mammoth
@@ -28,6 +29,8 @@ class Docx2HTML:
         fonts = extractFonts(self.filePath)
         body_matrix = None
         mammoth_html = ""
+
+        styles = extractStyles(self.filePath)
 
         
         

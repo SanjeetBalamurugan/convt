@@ -1,12 +1,13 @@
 import sys
 import argparse
+import re
 
-class terminal_colors:
-    SUCCESS = "\033[92m"
-    INFO = "\033[94m"
-    WARNING = "\033[33m"
-    ERROR = "\033[91m"
-    END = "\033[0m"
+from .importer import Importer
+from .config import terminal_colors
+from .converters.docx2html import Docx2HTML
+
+from docx2python import docx2python
+
 
 def main():
     parser = argparse.ArgumentParser(prog="convt",
@@ -16,5 +17,11 @@ def main():
     parser.add_argument("outputfilename")
 
     args = parser.parse_args()
-    print(args.inputfilename, args.outputfilename)
+    inputPath = Importer(args.inputfilename)
+    outputPath = Importer(args.outputfilename)
+
+    if inputPath.extension == ".docx" and outputPath.extension == ".html":
+        converter = Docx2HTML(inputPath, outputPath)
+        converter.Generate()
+    
     return 0

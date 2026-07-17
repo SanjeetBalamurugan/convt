@@ -248,3 +248,9 @@ class Alignment(StrEnum):
     INLINE = "inline"
     INSIDE = "inside"
     OUTSIDE = "outside"
+
+class StyleType(StrEnum):
+    PARAGRAPH = "paragraph"
+    CHARACTER = "character"
+    TABLE = "table"
+    NUMBERING = "numbering"

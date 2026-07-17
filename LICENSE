@@ -1,0 +1,41 @@
+ORION LICENSE
+
+Copyright © 2026 Sanjeet Balamurugan. All rights reserved.
+
+1. PERMITTED USE AND MODIFICATION
+The Licensor hereby grants you a non-exclusive, world-wide, royalty-free 
+license to view, copy, modify, and run the source code of this software 
+solely for personal, educational, non-commercial, or internal evaluation 
+purposes. 
+
+2. COMMERCIAL RESTRICTIONS
+Any commercial use, commercial exploitation, or commercialisation of this 
+software, its source code, or any derivative works is strictly prohibited. 
+Prohibited commercial use includes, but is not limited to:
+- Selling, renting, or leasing the software or modified versions of it.
+- Using the software to provide commercial services or hosting.
+- Integrating the software into products or services that generate revenue.
+
+3. DISTRIBUTION AND ATTRIBUTION RESTRICTIONS
+You may distribute unmodified copies of this software or your modifications 
+(collectively, "distros") to third parties provided that:
+- Such distribution is entirely non-commercial and free of charge.
+- You include a full copy of this License text with the distribution.
+- You preserve all original copyright notices.
+- Any modified distro or derivative work must prominently display or include 
+  a visible notice to users stating: "Built on top of [Insert Project Name]" 
+  along with a functional link to the original project homepage: [Insert Project Homepage URL].
+
+4. INTELLECTUAL PROPERTY AND PERMANENCE
+The Licensor retains all right, title, and interest in and to the software. 
+This license does not transfer any ownership rights. The restrictions 
+outlined in this license are permanent and do not expire.
+
+5. DISCLAIMER OF WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL 
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN THE SOFTWARE.

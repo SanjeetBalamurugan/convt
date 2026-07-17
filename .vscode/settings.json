@@ -1,0 +1,5 @@
+{
+    "copyrightInserter.holder": "Sanjeet Balamurugan",
+    "copyrightInserter.license": "user",
+    "copyrightInserter.userText": "Copyright © ${year} ${holder}. All rights reserved.\nThis source code is licensed under the Orion License.\nCommercial use, commercialisation, and revenue generation are strictly prohibited.\nPersonal, non-commercial use and modification are permitted. \n\n\nAny distributed modifications must attribute \"Convt\" and link to the homepage at \"https://github.com/SanjeetBalamurugan/convt\".\nSee the root LICENSE file for details."
+}

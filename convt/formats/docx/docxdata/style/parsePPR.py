@@ -1,4 +1,16 @@
+"""
+ Copyright © 2026 Sanjeet Balamurugan. All rights reserved.
+ This source code is licensed under the Orion License.
+ Commercial use, commercialisation, and revenue generation are strictly prohibited.
+ Personal, non-commercial use and modification are permitted.
+
+
+ Any distributed modifications must attribute "Convt" and link to the homepage at "https://github.com/SanjeetBalamurugan/convt".
+ See the root LICENSE file for details.
+ """
+
 import xml.etree.ElementTree as ET
+from convt.formats.docx.docxdata.style.parseNumPR import parseStyles_numPr
 from convt.formats.docx.docxdata.stylesData import Alignment, BDRVal, SHDVal
 from convt.parser.hxml import getAttr
 from convt.formats.docx.docxdata.defaults import defaults_pPr
@@ -159,6 +171,7 @@ def parseStyles_pPr(pPr: ET.Element, ns: dict) -> dict:
     shd = pPr.find("w:shd", ns)
     pBdr = pPr.find("w:pBdr", ns)
     framePr = pPr.find("w:framePr", ns)
+    numPr = pPr.find("w:numPr", ns)
 
     output["spacing"] = parseSpacing(spacing, ns) if spacing is not None else defaults_pPr["spacing"]
     output["ind"] = parseIndentation(ind, ns) if ind is not None else defaults_pPr["ind"]
@@ -166,5 +179,7 @@ def parseStyles_pPr(pPr: ET.Element, ns: dict) -> dict:
     output["pBdr"] = parsePPRBDR(ind, ns) if pBdr is not None else defaults_pPr["pBdr"]
     output["framePr"] = parseFramePr(ind, ns) if framePr is not None else defaults_pPr["framePr"]
 
+    output["numPr"] = parseStyles_numPr(numPr, ns) if numPr is not None else defaults_pPr["numPr"]
+    
     output |= parsePPRToggles(pPr, ns)
     return output

@@ -265,3 +265,46 @@ class StyleType(StrEnum):
     CHARACTER = "character"
     TABLE = "table"
     NUMBERING = "numbering"
+
+class TableWidthType(StrEnum):
+    AUTO = "auto"
+    DXA = "dxa"
+    NIL = "nil"
+    PCT = "pct"
+
+class TableJc(StrEnum):
+    LEFT = "left"
+    CENTER = "center"
+    RIGHT = "right"
+
+class CellVAlign(StrEnum):
+    TOP = "top"
+    CENTER = "center"
+    BOTTOM = "bottom"
+    BOTH = "both"
+
+class VMergeVal(StrEnum):
+    RESTART = "restart"
+    CONTINUE = "continue"
+
+class TblStylePrType(StrEnum):
+    FIRST_ROW = "firstRow"
+    LAST_ROW = "lastRow"
+    FIRST_COLUMN = "firstCol"
+    LAST_COLUMN = "lastCol"
+    BAND_1_HORZ = "band1Horz"
+    BAND_2_HORZ = "band2Horz"
+    BAND_1_VERT = "band1Vert"
+    BAND_2_VERT = "band2Vert"
+    NW_CELL = "nwCell"
+    NE_CELL = "neCell"
+    SW_CELL = "swCell"
+    SE_CELL = "seCell"
+
+class LatentStyleName(StrEnum):
+    NORMAL = "Normal"
+    HEADING_1 = "heading 1"
+    HEADING_2 = "heading 2"
+    TITLE = "Title"
+    BODY_TEXT = "Body Text"
+    LIST_BULLET = "List Bullet"

@@ -13,8 +13,11 @@
 
 import xml.etree.ElementTree as ET
 from zipfile import ZipFile
+from convt.formats.docx.docxdata.style.parseLatentStyles import parseLatentStyles
+from convt.formats.docx.docxdata.style.parseNumPR import parseStyles_numPr
 from convt.formats.docx.docxdata.style.parsePPR import parseStyles_pPr
 from convt.formats.docx.docxdata.style.parseRPR import parseStyles_rPr
+from convt.formats.docx.docxdata.style.parseTablePR import parseTableProperties, parseTableStylePr
 from convt.formats.docx.docxdata.stylesData import StyleType
 from convt.parser.hxml import getAttr, getNameSpaces
 
@@ -70,12 +73,18 @@ def parseStyles(style: ET.Element[str], ns: dict) -> dict:
         element = getAttr(style.find(f"w:{tag}", ns), "w:val", ns)
         out[tag] = { "val": element }
 
-    if not default and type == StyleType.PARAGRAPH:
-        pPr = style.find("w:pPr", ns)
-        out["pPr"] = parseStyles_pPr(pPr, ns) if (pPr is not None and type != StyleType.CHARACTER) else None
+    pPr = style.find("w:pPr", ns)
+    out["pPr"] = parseStyles_pPr(pPr, ns) if (pPr is not None and type == StyleType.PARAGRAPH) else None
 
-        rPr = style.find("w:rPr", ns)
-        out["rPr"] = parseStyles_rPr(rPr, ns) if rPr is not None else None
+    rPr = style.find("w:rPr", ns)
+    out["rPr"] = parseStyles_rPr(rPr, ns) if (rPr is not None and type in [StyleType.PARAGRAPH, StyleType.CHARACTER]) else None
+
+    tblPr = style.find("w:tblPr", ns)
+    out["tblPr"] = parseTableProperties(tblPr, ns) if (tblPr is not None and type == StyleType.TABLE) else None
+
+    tblStylePr_elements = style.findall("w:tblStylePr", ns)
+    out["tblStylePr"] = [parseTableStylePr(el, ns) for el in tblStylePr_elements] if (tblStylePr_elements and type == StyleType.TABLE) else None
+    
 
     return out
 
@@ -101,12 +110,13 @@ def extractStyles(document_path):
             defaults_rPr = parsePRStyles(rPrDefault, namespaces)
             defaults_pPr = parsePRStyles(pPrDefault, namespaces)
 
+            latent_styles_el = root.find("w:latentStyles", namespaces)
+            latent_styles_data = parseLatentStyles(latent_styles_el, namespaces) if latent_styles_el is not None else None
+
+            styles["latentStyles"] = latent_styles_data
+
             for style in root.findall("w:style", namespaces):
                 styleId = getAttr(style, "w:styleId", namespaces)
                 styles[styleId] = parseStyles(style, namespaces)
                 
-    print(styles["Normal"])
-    print()
-    print()
-    print(styles["Heading1"])
     return styles

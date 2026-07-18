@@ -1,5 +1,6 @@
 {
     "recommendations": [
-        "minherz.copyright-inserter"
+        "minherz.copyright-inserter",
+        "editorconfig.editorconfig"
     ]
 }

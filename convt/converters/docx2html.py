@@ -15,6 +15,7 @@ import re
 
 from convt.formats.docx.fonts import extractFonts
 from convt.formats.docx.styles import extractStyles
+from convt.formats.docx.theme import extractTheme
 from convt.importer import Importer
 
 import mammoth
@@ -42,6 +43,8 @@ class Docx2HTML:
         mammoth_html = ""
 
         styles = extractStyles(self.filePath)
+        themes = extractTheme(self.filePath)
 
+        print(themes)
         
         
